@@ -1,4 +1,7 @@
 #!/usr/bin/zsh
 
-export prj=/home/stone/Projects/Beglaubigung;
-export src=/home/stone/Projects/Beglaubigung/src;
+export ProjectName=Beglaubigung;
+export base=${ZDOTDIR}/Projects/${ProjectName};
+export src=${base}/src;
+export infra=${base}/src/infra;
+export app=${base}/src/application;
