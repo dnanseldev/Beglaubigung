@@ -14,6 +14,7 @@
 > docker compose -f docker-compose-mysql-service.yml down
 
 # -----MYSQL CONFIGS -------------
+
 # See databases
 > SHOW DATABASES | SHOW SCHEMAS;
 
