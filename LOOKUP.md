@@ -22,3 +22,7 @@
 # Change database
 > USE DATABASE_NAME
 > USE beglaubigung
+
+# -------REPOSITORIES ---------------
+# Repository is a domain service
+# First artifact must stay in domain tier
