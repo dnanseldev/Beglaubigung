@@ -1,4 +1,5 @@
-import { TEntity } from "./base-entity";
+import { TEntity } from "../interfaces/base-entity"
+
 
 export class System extends TEntity
 {
