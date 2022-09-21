@@ -25,6 +25,6 @@ export class System extends TEntity
 
     get info()
     {
-        return `ID: ${this.EntityID} Name: ${this.sdto.name} Desc: ${this.sdto.description} URL: ${this.sdto.domainURL}`
+        return `ID: ${this.EntityID} Name: ${this.sdto.name} Desc: ${this.sdto.description} URL: ${this.sdto.domain_url}`
     }
 }
