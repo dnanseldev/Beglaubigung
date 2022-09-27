@@ -5,6 +5,7 @@ import { SystemDTO } from "./system-dto"
 export class System extends TEntity
 {
     sdto: SystemDTO
+    allRequirementsFulfilled: boolean = false
 
     constructor( sdto: SystemDTO ) {        
         super()
@@ -21,6 +22,10 @@ export class System extends TEntity
     {       
         const re = /^[\w\s]+$/g    
         return re.exec(p_description) && p_description.length >= 3 ? true : false
+    }
+
+    public  isAllrequirementsFulfilled(): boolean {
+        return this.allRequirementsFulfilled 
     }
 
     get info()
