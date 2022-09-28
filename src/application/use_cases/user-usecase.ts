@@ -1,7 +1,7 @@
 import { SystemDTO } from "../../domain/entities/system/system-dto";
-import { ISystemRepository } from "../../domain/entities/system/system-repository";
+import { ISystemRepository } from "../repositories/system-repository";
 
-class systemUseCase {
+class UserUseCase {
 
     dto: SystemDTO
 
