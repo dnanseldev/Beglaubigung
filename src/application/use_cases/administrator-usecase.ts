@@ -1,4 +1,5 @@
 import { SystemDTO } from "../../domain/entities/system/system-dto";
+import { IRepository } from "../repositories/base-repository";
 import { ISystemRepository } from "../repositories/system-repository";
 
 class UserUseCase {
@@ -12,13 +13,10 @@ class UserUseCase {
     RegisterSystem(sr: ISystemRepository<SystemDTO>) {
         sr.Save(this.dto)
     }
-
-    RemoveSystem(sr: ISystemRepository<SystemDTO>) {
-        sr.Delete(this.dto)
-    }
+  
 
     DeleteLogicallySystem(sr: ISystemRepository<SystemDTO>) {
-        sr.Delete(this.dto)
+        sr.DeleteLogically(this.dto)
     }
 
     UpdateSystem(sr: ISystemRepository<SystemDTO>) {

@@ -1,8 +1,7 @@
-export interface ISystemRepository<TEntity>
+import { IRepository } from "./base-repository";
+
+export interface ISystemRepository<TEntity> extends IRepository<TEntity> 
 {
-    FindByID(id: any): Promise<TEntity>
-    Insert(e: TEntity): void
-    Update(e: TEntity): void
-    Save(e: TEntity): void
-    Delete(e: TEntity): void
+   
+    DeleteLogically(e: TEntity): void
 }
