@@ -4,7 +4,7 @@ import { SystemFactory } from "../../domain/entities/system/system-factory";
 import { Result } from "../../domain/entities/validation/result-error";
 import { ISystemRepository } from "../repositories/system-repository";
 
-class UserUseCase {
+export class AdminUserUseCase {
     
     systemOrError: Result<System>
     system = {} as System;
@@ -36,6 +36,6 @@ class UserUseCase {
     }
 
     FindSystem(sr: ISystemRepository<System>) {
-        sr.FindByID(this.dto.sid)
+        sr.FindByID(this.system.EntityID)
     }
 }

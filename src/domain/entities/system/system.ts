@@ -1,16 +1,23 @@
 import { TEntity } from "../interfaces/base-entity"
-import { SystemDTO } from "./system-dto"
-
 
 export class System extends TEntity
 {
-    sdto: SystemDTO
+    name: string;
+    description: string;
+    domain_url: string;    
     allRequirementsFulfilled: boolean = false
 
-    constructor( sdto: SystemDTO )
+    constructor(  sid: any
+                 ,name: string
+                 ,description: string
+                 ,domain_url: string = '' )
+
     {        
         super()
-        this.sdto = sdto
+        this.ID = sid
+        this.name = name
+        this.description = description
+        this.domain_url = domain_url
     }
 
     public static isvalidName(p_name: string): boolean
@@ -30,6 +37,6 @@ export class System extends TEntity
     }
 
     get info() {
-        return `ID: ${this.EntityID} Name: ${this.sdto.name} Desc: ${this.sdto.description} URL: ${this.sdto.domain_url}`
+        return `ID: ${this.EntityID} Name: ${this.name} Desc: ${this.description} URL: ${this.domain_url}`
     }
 }

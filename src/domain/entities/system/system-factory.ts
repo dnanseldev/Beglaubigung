@@ -16,6 +16,6 @@ export class SystemFactory implements TCreator<System, Result<System>>
     if( !System.isvalidName(dto.name) )
       return Result.fail<System>('Error: Invalid System Name')   
 
-    return Result.ok<System>( new System(dto) )
+    return Result.ok<System>( new System(dto.sid, dto.name, dto.description, dto.domain_url) )
   }      
 }
