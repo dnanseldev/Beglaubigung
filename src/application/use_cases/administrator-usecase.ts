@@ -1,29 +1,41 @@
+import { System } from "../../domain/entities/system/system";
 import { SystemDTO } from "../../domain/entities/system/system-dto";
-import { IRepository } from "../repositories/base-repository";
+import { SystemFactory } from "../../domain/entities/system/system-factory";
+import { Result } from "../../domain/entities/validation/result-error";
 import { ISystemRepository } from "../repositories/system-repository";
 
 class UserUseCase {
+    
+    systemOrError: Result<System>
+    system = {} as System;
 
-    dto: SystemDTO
+    constructor(private dto: SystemDTO)
+    {        
+       this.systemOrError = new SystemFactory().factoryMethod(this.dto)
 
-    constructor(dto: SystemDTO) {
-        this.dto = dto
+        if ( this.systemOrError.isFailure ) 
+           console.log(this.systemOrError.error)
+        else
+        {
+           this.system = this.systemOrError.getValue() 
+           console.log(this.system.info)    
+        }
     }
 
-    RegisterSystem(sr: ISystemRepository<SystemDTO>) {
-        sr.Save(this.dto)
+    RegisterSystem(sr: ISystemRepository<System>) {
+        sr.Save(this.system)
     }
   
 
-    DeleteLogicallySystem(sr: ISystemRepository<SystemDTO>) {
-        sr.DeleteLogically(this.dto)
+    DeleteLogicallySystem(sr: ISystemRepository<System>) {
+        sr.DeleteLogically(this.system)
     }
 
-    UpdateSystem(sr: ISystemRepository<SystemDTO>) {
-        sr.Update(this.dto)
+    UpdateSystem(sr: ISystemRepository<System>) {
+        sr.Update(this.system)
     }
 
-    FindSystem(sr: ISystemRepository<SystemDTO>) {
+    FindSystem(sr: ISystemRepository<System>) {
         sr.FindByID(this.dto.sid)
     }
 }

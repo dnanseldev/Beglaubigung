@@ -7,7 +7,8 @@ export class System extends TEntity
     sdto: SystemDTO
     allRequirementsFulfilled: boolean = false
 
-    constructor( sdto: SystemDTO ) {        
+    constructor( sdto: SystemDTO )
+    {        
         super()
         this.sdto = sdto
     }
@@ -28,8 +29,7 @@ export class System extends TEntity
         return this.allRequirementsFulfilled 
     }
 
-    get info()
-    {
+    get info() {
         return `ID: ${this.EntityID} Name: ${this.sdto.name} Desc: ${this.sdto.description} URL: ${this.sdto.domain_url}`
     }
 }
