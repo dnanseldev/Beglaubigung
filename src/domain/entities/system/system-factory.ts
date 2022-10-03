@@ -1,5 +1,5 @@
-import { TCreator } from "../interfaces/base-factory"
-import { Result } from "../validation/result-error"
+import { TCreator } from "../../interfaces/base-factory"
+import { Result } from "../../validation/result-error"
 import { System } from "./system"
 import { SystemDTO } from "./system-dto"
 

@@ -1,7 +1,7 @@
 import { System } from "../../domain/entities/system/system";
 import { SystemDTO } from "../../domain/entities/system/system-dto";
 import { SystemFactory } from "../../domain/entities/system/system-factory";
-import { Result } from "../../domain/entities/validation/result-error";
+import { Result } from "../../domain/validation/result-error";
 import { ISystemRepository } from "../repositories/system-repository";
 
 export class AdminUserUseCase {
