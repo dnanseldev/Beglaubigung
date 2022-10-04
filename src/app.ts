@@ -4,7 +4,7 @@ import express from 'express';
 
 const app = express()
 app.use(express.json())
-const systemRoutes = require('./infra/routes/system')
+const systemRoutes = require('./infra/routes/system-routes')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(systemRoutes)
