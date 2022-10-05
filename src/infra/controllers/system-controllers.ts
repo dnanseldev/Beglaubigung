@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
+import { Guid } from "guid-typescript";
 import { SystemDTO } from "../../domain/entities/system/system-dto";
 
 class SystemController 
 {
     public async register(req: Request, res: Response): Promise<Response>
-    {
+    {        
         const s_dto: SystemDTO = {
-             sid: '123456'
+             sid: Guid.create()
             ,name: req.body.name
             ,description: req.body.description
             ,domain_url: req.body.domain_url
