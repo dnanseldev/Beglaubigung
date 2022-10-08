@@ -1,23 +1,21 @@
 import { TEntity } from "../../interfaces/base-entity";
+import { SystemProps } from "./system-dto";
+import crypto from 'crypto'
 
 export class System extends TEntity
-{
-    name: string;
-    description: string;
-    domain_url: string;    
+{    
+    props: SystemProps
     allRequirementsFulfilled: boolean = false
 
-    constructor(  sid: any
-                 ,name: string
-                 ,description: string
-                 ,domain_url: string = '' )
+    constructor( props: SystemProps )
 
     {        
         super()
-        this.ID = sid
-        this.name = name
-        this.description = description
-        this.domain_url = domain_url
+        this.ID = props.sid || crypto.randomUUID()
+        this.props = {
+            ...props
+            ,domain_url: props.domain_url || ''
+        }
     }
 
     public static isvalidName(p_name: string): boolean
@@ -37,6 +35,6 @@ export class System extends TEntity
     }
 
     get info() {
-        return `ID: ${this.EntityID} Name: ${this.name} Desc: ${this.description} URL: ${this.domain_url}`
+        return `ID: ${this.EntityID} Name: ${this.props.name} Desc: ${this.props.description} URL: ${this.props.domain_url}`
     }
 }

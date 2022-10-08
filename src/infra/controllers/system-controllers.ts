@@ -1,12 +1,13 @@
-import { Request, Response } from "express";
-import { Guid } from "guid-typescript";
-import { SystemDTO } from "../../domain/entities/system/system-dto";
 
-class SystemController 
+import { Guid } from "guid-typescript";
+import { SystemProps } from "../../domain/entities/system/system-dto";
+
+
+class SystemController<Request extends any, Response extends any> 
 {
-    public async register(req: Request, res: Response): Promise<Response>
+    public async register(req: Request, res: Response): Promise<void>
     {        
-        const s_dto: SystemDTO = {
+        const s_dto: SystemProps = {
              sid: Guid.create()
             ,name: req.body.name
             ,description: req.body.description
