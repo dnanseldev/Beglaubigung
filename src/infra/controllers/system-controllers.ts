@@ -1,19 +1,22 @@
 
-import { Guid } from "guid-typescript";
+import { Request, Response } from "express";
 import { SystemProps } from "../../domain/entities/system/system-dto";
+import { Guid } from "guid-typescript";
 
 
-class SystemController<Request extends any, Response extends any> 
+export class SystemController 
 {
+    
     public async register(req: Request, res: Response): Promise<void>
-    {        
+    {  
+              
         const s_dto: SystemProps = {
-             sid: Guid.create()
-            ,name: req.body.name
-            ,description: req.body.description
-            ,domain_url: req.body.domain_url
-        }        
+            
+            ...req.body
+       } 
 
-        return res.json(s_dto)
+
+
+        //return res.json(s_dto)
     }
 }

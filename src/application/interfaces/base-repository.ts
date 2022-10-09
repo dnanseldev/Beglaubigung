@@ -1,6 +1,6 @@
 export interface IRepository<TEntity> {
-      FindByID(id: any): Promise<TEntity>
-      Insert(e: TEntity): void
-      Update(e: TEntity): void
-      Save(e: TEntity): void
+      FindByID(id: any): Promise<TEntity>     
+      Update(e: TEntity): Promise<void>
+      Save(e: TEntity): Promise<void>
+      ListAll(): Promise<TEntity[]>
 }

@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/add-system', (req, res) => {
-
+   
     res.send(
         '<h1>Register a system</h1>'
     )

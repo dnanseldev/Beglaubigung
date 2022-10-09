@@ -1,5 +1,5 @@
 import { System } from "../../domain/entities/system/system";
-import { SystemDTO } from "../../domain/entities/system/system-dto";
+import { SystemProps } from "../../domain/entities/system/system-dto";
 import { SystemFactory } from "../../domain/entities/system/system-factory";
 import { Result } from "../../domain/validation/result-error";
 import { ISystemRepository } from "../interfaces/system-repository";
@@ -9,7 +9,7 @@ export class AdminUserUseCase {
     systemOrError: Result<System>
     system = {} as System;
 
-    constructor(private dto: SystemDTO)
+    constructor(private dto: SystemProps)
     {        
        this.systemOrError = new SystemFactory().factoryMethod(this.dto)
 

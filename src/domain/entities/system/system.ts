@@ -37,4 +37,8 @@ export class System extends TEntity
     get info() {
         return `ID: ${this.EntityID} Name: ${this.props.name} Desc: ${this.props.description} URL: ${this.props.domain_url}`
     }
+
+    toJSON() {
+        return this.props
+    }
 }
