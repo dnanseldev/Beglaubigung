@@ -1,45 +1,44 @@
-import { IRepository } from "../../application/interfaces/base-repository";
 import { ISystemRepository } from "../../application/interfaces/system-repository";
-import { SystemProps } from "../../domain/entities/system/system-dto";
+import { System } from "../../domain/entities/system/system";
 
 
-export default class SystemInMemoryRepository implements ISystemRepository<SystemProps>
+export default class SystemInMemoryRepository implements ISystemRepository<System>
 {
-    items: SystemProps[] = []  
+    items: System[] = []  
 
-    DeleteLogically(s: SystemProps): void {
+    DeleteLogically(s: System): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    FindByID(id: any): Promise<SystemProps> {
+
+    FindByID(id: any): Promise<System> {
         throw new Error("Method not implemented.");
     }
     
     
-    async Insert(e: SystemProps): Promise<void> {
+    async Insert(e: System): Promise<void> {
         this.items.push(e) 
     }
 
-    async Update(e: SystemProps): Promise<void>
+    async Update(e: System): Promise<void>
     {
-        const index = this.items.findIndex( item => item.sid === e.sid )        
+        const index = this.items.findIndex( item => item.EntityID === e.EntityID )        
 
-        this.items[index] = {
-            ...this.items[index]           
-           ,...e
+        this.items[index].props = {                
+           ...e.props
         }
     }
 
-    async Save(e: SystemProps): Promise<void> {
+    async Save(e: System): Promise<void> {
         this.items.push(e)
     }
 
     async Delete(id: any): Promise<void>
     {
-        const index = this.items.findIndex( item => item.sid === id )
+        const index = this.items.findIndex( item => item.EntityID === id )
         this.items.splice(index, 1)
     }
 
-    async ListAll(): Promise<SystemProps[]> {
+    async ListAll(): Promise<System[]> {
         return this.items
     }    
 

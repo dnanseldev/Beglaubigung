@@ -6,36 +6,44 @@ import { ISystemRepository } from "../interfaces/system-repository";
 
 export class AdminUserUseCase {
     
-    systemOrError: Result<System>
+    //systemOrError: Result<System>
     system = {} as System;
+    sr: ISystemRepository<System>
+    sf: SystemFactory
+   
+    constructor(sr: ISystemRepository<System>)
+    {       
+       this.sr = sr
+       this.sf = new SystemFactory() 
+    }
 
-    constructor(private dto: SystemProps)
-    {        
-       this.systemOrError = new SystemFactory().factoryMethod(this.dto)
-
-        if ( this.systemOrError.isFailure ) 
-           console.log(this.systemOrError.error)
-        else
+    async RegisterSystem(system: System)
+    {
+        /*
+        try
         {
-           this.system = this.systemOrError.getValue() 
-           console.log(this.system.info)    
-        }
+            const systemOrError = new SystemFactory().factoryMethod(s_props)
+
+            if ( systemOrError.isFailure )
+               throw systemOrError.error
+
+            await this.sr.Save(systemOrError.getValue())  
+        } catch (error) {
+            console.log(error)
+        } 
+        */ 
+       await this.sr.Save(system)      
+    }  
+
+    async DeleteLogicallySystem(id: any) {
+        await this.sr.DeleteLogically(id)
     }
 
-    RegisterSystem(sr: ISystemRepository<System>) {
-        sr.Save(this.system)
-    }
-  
-
-    DeleteLogicallySystem(sr: ISystemRepository<System>) {
-        sr.DeleteLogically(this.system)
+    async UpdateSystem(system: System) {
+       await this.sr.Update(system)
     }
 
-    UpdateSystem(sr: ISystemRepository<System>) {
-        sr.Update(this.system)
-    }
-
-    FindSystem(sr: ISystemRepository<System>) {
-        sr.FindByID(this.system.EntityID)
-    }
+    async FindSystem(id: any) {
+       await this.sr.FindByID(id)
+    }   
 }

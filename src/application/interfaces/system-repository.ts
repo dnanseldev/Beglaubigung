@@ -2,5 +2,5 @@ import { IRepository } from "./base-repository";
 
 export interface ISystemRepository<System> extends IRepository<System> 
 {   
-    DeleteLogically(s: System): void
+    DeleteLogically(s: System): Promise<void>
 }
