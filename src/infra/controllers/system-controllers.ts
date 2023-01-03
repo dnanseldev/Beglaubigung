@@ -1,11 +1,9 @@
-
 import { Request, Response } from "express";
 import { SystemProps } from "../../domain/entities/system/system-dto";
 import { AdminUserUseCase } from "../../application/use_cases/administrator-usecase";
 import { SystemFactory } from "../../domain/entities/system/system-factory";
 import { ISystemRepository } from "../../application/interfaces/system-repository";
 import { System } from "../../domain/entities/system/system";
-
 
 export class SystemController 
 {
